@@ -5,8 +5,9 @@ const API_BASE = "";
 
 /* One object per app. `id` must match the server's apps.json and ipas/<id>.ipa */
 const APPS = [
-  { id: "sample", name: "Sample App", version: "1.0.0", icon: "icons/sample.png", manifest: "manifests/sample.plist",
-    desc: { ckb: "وەسفێکی کورت بۆ بەرنامەکە.", ar: "وصف مختصر للتطبيق.", en: "Short description of the app." } }
+  { id: "mxforge", name: "MxForge", version: "1.0",
+    icon: "mxforge.png", manifest: "manifests/mxforge.plist",
+    desc: { ckb: "بەرنامەی MxForge", ar: "تطبيق MxForge", en: "MxForge app" } }
 ];
 
 /* ===== TRANSLATIONS (Sorani Kurdish = main) ===== */
