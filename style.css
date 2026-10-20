@@ -1,0 +1,100 @@
+/* ===== mam zagros — theme tokens. Dark is the default; light is opt-in. ===== */
+:root {
+  --bg:#0a0c10; --surface:#14171d; --surface-2:#1d212a; --sep:rgba(255,255,255,.09);
+  --text:#f2f4f8; --text-2:#8b93a3; --accent:#5b8cff; --accent-soft:rgba(91,140,255,.16);
+  --glass:rgba(20,23,29,.78); --shadow:0 10px 30px rgba(0,0,0,.45);
+  --font:"Vazirmatn",-apple-system,BlinkMacSystemFont,"SF Pro Text","Segoe UI",Tahoma,sans-serif;
+  color-scheme:dark;
+}
+:root[data-theme="light"] {
+  --bg:#f2f3f7; --surface:#fff; --surface-2:#e9ebf1; --sep:rgba(0,0,0,.08);
+  --text:#12151b; --text-2:#6a7283; --accent:#2f6bff; --accent-soft:rgba(47,107,255,.12);
+  --glass:rgba(255,255,255,.8); --shadow:0 10px 30px rgba(20,30,60,.14);
+  color-scheme:light;
+}
+*{box-sizing:border-box;margin:0}
+html{-webkit-text-size-adjust:100%}
+body{background:var(--bg);color:var(--text);font:16px/1.5 var(--font);
+  padding-top:env(safe-area-inset-top);transition:background .25s,color .25s}
+.wrap{max-width:680px;margin:0 auto;padding:0 16px 130px}
+[hidden]{display:none!important}
+
+/* Brand header: photo + big name */
+.top{max-width:680px;margin:0 auto;padding:28px 20px 0;display:flex;align-items:center;gap:16px}
+.avatar{width:72px;height:72px;border-radius:50%;object-fit:cover;flex:none;box-shadow:0 0 0 3px var(--bg),0 0 0 5px var(--accent)}
+.brand-name{font-size:32px;font-weight:800;line-height:1.1;direction:ltr;letter-spacing:.01em}
+
+h1{font-size:32px;font-weight:800;margin:22px 4px 2px;line-height:1.2}
+.sub{color:var(--text-2);font-size:14px;margin:0 4px 16px}
+
+.search{width:100%;border:0;border-radius:14px;background:var(--surface);color:var(--text);
+  font:inherit;padding:12px 16px;margin-bottom:14px;box-shadow:inset 0 0 0 1px var(--sep)}
+.search::placeholder{color:var(--text-2)}
+.search:focus-visible,.seg button:focus-visible,.tab:focus-visible,.install:focus-visible,a.row:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+
+.notice{background:var(--surface);border-radius:14px;padding:12px 16px;margin-bottom:14px;color:var(--text-2);font-size:13.5px}
+
+/* Grouped list */
+.list{background:var(--surface);border-radius:20px;overflow:hidden;list-style:none;padding:0;box-shadow:inset 0 0 0 1px var(--sep)}
+.row{position:relative;display:flex;align-items:center;gap:14px;padding:14px 16px;color:inherit;text-decoration:none}
+.row+.row::before{content:"";position:absolute;top:0;inset-inline:90px 0;border-top:1px solid var(--sep)}
+.list.compact .row+.row::before{inset-inline:70px 0}
+.icon{width:60px;height:60px;flex:none;border-radius:22.37%;background:var(--surface-2) center/cover;box-shadow:inset 0 0 0 1px var(--sep)}
+.info{flex:1;min-width:0}
+.name{font-weight:700}
+.desc{color:var(--text-2);font-size:13px;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.meta{color:var(--text-2);font-size:12px;margin-top:2px}
+.install{border:0;cursor:pointer;text-decoration:none;background:var(--accent);color:#fff;font:700 14px var(--font);
+  padding:8px 20px;border-radius:999px;transition:transform .15s}
+.install:active{transform:scale(.94)}
+.empty{padding:28px 16px;text-align:center;color:var(--text-2)}
+
+/* Settings */
+.label{color:var(--text-2);font-size:13px;font-weight:600;margin:22px 8px 8px}
+.seg{display:flex;background:var(--surface);border-radius:14px;padding:4px;box-shadow:inset 0 0 0 1px var(--sep)}
+.seg button{flex:1;border:0;background:none;color:var(--text-2);font:600 14px var(--font);padding:9px 6px;border-radius:10px;cursor:pointer;transition:background .2s,color .2s}
+.seg button[aria-pressed="true"]{background:var(--accent);color:#fff}
+.sicon{width:42px;height:42px;flex:none;border-radius:12px;display:grid;place-items:center;color:#fff}
+.sicon svg{width:22px;height:22px}
+.tg{background:#2aabee}.msg{background:linear-gradient(145deg,#8b5bff,var(--accent))}
+.chev{width:18px;height:18px;color:var(--text-2);flex:none}
+[dir="rtl"] .chev{transform:scaleX(-1)}
+footer{color:var(--text-2);font-size:12px;text-align:center;margin-top:28px}
+
+/* Floating glass tab bar */
+.tabbar{position:fixed;inset-inline:0;bottom:calc(14px + env(safe-area-inset-bottom));margin:0 auto;width:min(340px,calc(100% - 32px));
+  display:flex;padding:6px;gap:4px;border-radius:26px;background:var(--glass);box-shadow:var(--shadow),inset 0 0 0 1px var(--sep);
+  -webkit-backdrop-filter:blur(22px) saturate(1.6);backdrop-filter:blur(22px) saturate(1.6)}
+.tab{flex:1;display:flex;flex-direction:column;align-items:center;gap:2px;border:0;background:none;color:var(--text-2);
+  font:600 12px var(--font);padding:8px 0;border-radius:20px;cursor:pointer;transition:background .2s,color .2s}
+.tab svg{width:22px;height:22px}
+.tab[aria-selected="true"]{color:var(--accent);background:var(--accent-soft)}
+
+/* Certificate form */
+.card{background:var(--surface);border-radius:20px;padding:6px 16px 16px;box-shadow:inset 0 0 0 1px var(--sep)}
+.file{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:14px 0;border-bottom:1px solid var(--sep);cursor:pointer;font-weight:600}
+.file input{position:absolute;width:1px;height:1px;opacity:0}
+.file:focus-within{outline:2px solid var(--accent);outline-offset:2px;border-radius:8px}
+.fname{color:var(--text-2);font-weight:400;font-size:13px;direction:ltr;max-width:55%;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.field{width:100%;margin-top:14px;border:0;border-radius:12px;background:var(--surface-2);color:var(--text);font:inherit;padding:12px 14px}
+.field:focus-visible,.primary:focus-visible,.ghost:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.primary{width:100%;margin-top:12px;border:0;border-radius:12px;background:var(--accent);color:#fff;font:700 15px var(--font);padding:13px;cursor:pointer}
+.primary:disabled{opacity:.55}
+.status:empty{display:none}
+.status{margin-top:12px;border-radius:12px;padding:12px 14px;font-size:14px}
+.status.err{background:rgba(255,69,58,.14);color:#ff6961}
+:root[data-theme="light"] .status.err{color:#c2271b}
+.status.ok{background:rgba(48,209,88,.12)}
+.ok-title{font-weight:700;color:#30d158;margin-bottom:6px}
+:root[data-theme="light"] .ok-title{color:#1a8f3c}
+.kv{display:flex;justify-content:space-between;gap:12px;font-size:13px;padding:3px 0}
+.kv span:first-child{color:var(--text-2)}
+.kv span:last-child{font-weight:600;text-align:end;overflow-wrap:anywhere}
+.ghost{margin-top:10px;border:0;background:none;color:#ff6961;font:600 13px var(--font);cursor:pointer;padding:6px 0}
+.hint{color:var(--text-2);font-size:12px;margin-top:12px}
+.badge{display:inline-block;background:var(--accent-soft);color:var(--accent);font-size:12.5px;font-weight:600;padding:5px 12px;border-radius:999px;margin:0 4px 14px;direction:ltr}
+.toast{position:fixed;inset-inline:0;bottom:calc(96px + env(safe-area-inset-bottom));margin:0 auto;width:max-content;max-width:calc(100% - 40px);
+  background:var(--text);color:var(--bg);font-size:14px;font-weight:600;padding:10px 18px;border-radius:999px;box-shadow:var(--shadow);z-index:5}
+section{animation:in .2s ease-out}
+@keyframes in{from{opacity:0}to{opacity:1}}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
